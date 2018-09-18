@@ -1,0 +1,107 @@
+<div  class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header">
+          <strong>Profile</strong>
+          <small>Picture</small>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-12" style="text-align: center;">
+            	<img src="assets/img/avatars/8.jpg" class="img-avatar" alt="Profile Picture" width="200" height="200"/>
+            </div>
+          </div><!--/.row-->
+        </div>
+        <div class="card-footer">
+          <button type="browse" class="btn btn-sm btn-info"><i class="fa fa-ban"></i> Change Profile Picture </button>
+           <button type="submit" class="btn btn-sm btn-primary" data-toggle="modal" (click)="saveProfilePictureModal.show()" ><i class="fa fa-dot-circle-o"></i> Save Changes</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <strong>Api</strong>
+          <small>Route</small>
+        </div>
+        <div class="card-body">
+          <h1>{{testVar.name}}</h1>
+          <h2>{{testVar.message}}</h2>
+        </div>
+        <div class="card-footer">
+          
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-header">
+          <strong>Edit</strong>
+          <small>Profile</small>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter your user name" value="micheal123">
+          </div>
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="first-name">First Name</label>
+              <input type="text" class="form-control" id="first-name" placeholder="Enter First Name" value="Micheal">
+            </div>
+            <div class="form-group col-sm-6">
+              <label for="second-name">Second Name</label>
+              <input type="text" class="form-control" id="second-name" placeholder="Second Name" value="Dany Rand">
+            </div>
+          </div><!--/.row-->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter your Email" value="micheal123@gmail.com">
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="submit" class="btn btn-sm btn-primary" data-toggle="modal" (click)="savePersonalInfoModal.show()"><i class="fa fa-dot-circle-o"></i> Save Changes</button>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+
+  <div bsModal #saveProfilePictureModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-info" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Save Profile Picture</h4>
+        <button type="button" class="close" (click)="saveProfilePictureModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Click Save to save  <strong>Profile Picture</strong> or <strong>Cancel</strong> to abort this modal&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="saveProfilePictureModal.hide()">Close</button>
+        <button type="button" class="btn btn-info">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div bsModal #savePersonalInfoModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-info" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Save Personal Information</h4>
+        <button type="button" class="close" (click)="savePersonalInfoModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Click Save to save <strong>Personal Information</strong> or <strong>Cancel</strong> to abort this modal&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="savePersonalInfoModal.hide()">Close</button>
+        <button type="button" class="btn btn-info">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

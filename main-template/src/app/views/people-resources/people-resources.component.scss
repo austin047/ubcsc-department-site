@@ -1,0 +1,63 @@
+.ubcsc-navbar 
+{
+    background-color: rgb(43, 2, 43);
+}
+.ubcsc-searchinput
+{
+    font-weight:lighter;
+    text-decoration-color:  rgb(43, 2, 43);
+    align-self: center;
+    margin: auto;
+    margin-top: 50px;
+}
+a
+{
+    color: rgb(43, 2, 43);
+    font-weight:lighter ;
+}
+
+.ubcsc-billboard
+{
+    height: 300px;
+    /* background-image: url("../../assets/img/map_of_computer_science.jpeg"); */
+    background-position: center;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(43, 2, 43);
+    border-image-repeat: none;
+}
+.ubcsc-hodmessage
+{
+    color: inherit;
+}
+.ubcsc-studiesarticle
+{
+    height: 300px;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(43, 2, 43);
+    background-color:  rgb(43, 2, 43);
+    margin: 4%;
+}
+.ubcsc-ativitiesarticle
+{
+    height: 300px;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(43, 2, 43);
+    background-color:  rgb(43, 2, 43);
+    margin: 4%;
+}
+.ubcsc-footer
+{
+    height: 500px;
+    background-position: center;
+    border: solid;
+    border-width: 1px;
+    border-color: rgb(43, 2, 43);
+    background-color:  rgb(43, 2, 43);
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}

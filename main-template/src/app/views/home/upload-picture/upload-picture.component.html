@@ -1,0 +1,47 @@
+    
+    <button type="button" class="btn btn-info" (click)="uploadImageModal.show()">Add image</button>   
+
+
+    <div bsModal #uploadImageModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-info" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Upload Image</h4>
+            <button type="button" class="close" (click)="uploadImageModal.hide()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input type="file" (change)="set($event.target.files)" accept="{{fileTypes}}">
+             <br>
+
+            <ng-container *ngIf="filesize > 0.0">File size: {{filesize}}MB </ng-container> 
+
+            <br/><br/>
+             
+                   <progressbar class="progress progress-striped progress-animated"  [max]="max" [value]="percentDone" style="background-color: white">
+                     <span style="color:white; white-space:nowrap;">{{percentDone}}%</span>
+                   </progressbar>
+              
+
+            <br><br>
+            <ng-container *ngIf="uploadSuccess">
+              Upload Successful
+            </ng-container> 
+
+           <!--  <p>Click Save to save <strong>HOD Message</strong>  or <strong>Cancel</strong> to abort this modal&hellip;</p> -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="uploadImageModal.hide()">Close</button>
+            <button type="button" class="btn btn-info" [disabled]="!uploadReady" (click)="upload()">Upload Image</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <!-- 
+        <div class="progress">
+          <div id="myBar" class="progress-bar progress-bar-striped progress-bar-animated active" role="progressbar"
+          aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">{{percentDone}}%</div>
+        </div> -->

@@ -1,0 +1,69 @@
+<div class="card">
+  <form novalidate [formGroup]="contactusform">
+    <div class="card-header">
+        <strong>Contact</strong>
+        <small>Info</small>
+      </div>
+        <div class="card-body">
+          <fieldset formGroupName="contactus">
+            <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="contactNumber">Contact Number</label>
+                  <input type="text" class="form-control"  formControlName="number"  id="contactusnumber" value="{{contactUs.number.value}}" >
+                  <div class="form-control-feedback" *ngIf="contactUs.number.errors && (contactUs.number.dirty || contactUs.number.touched)">
+                      <div class="alert alert-warning" style="padding-bottom:0px">
+                        <p *ngIf="contactUs.number.errors.required">Contact Number is required</p>
+                        <p *ngIf="contactUs.number.errors.minlength">
+                          - Contact Number must be {{contactUs.number.errors.minlength.requiredLength}} numbers long, we need another {{contactUs.number.errors.minlength.requiredLength - contactUs.number.errors.minlength.actualLength}} Integers </p>
+                        <p *ngIf="contactUs.number.errors.maxlength">
+                          - Contact Number must be {{contactUs.number.errors.maxlength.requiredLength}} numbers long, you need to reduce {{contactUs.number.errors.maxlength.actualLength - contactUs.number.errors.maxlength.requiredLength}} Integers </p>     
+                          <p *ngIf="contactUs.number.errors.pattern">
+                            - Contact Number should be of form '67888888'.
+                          </p>
+                          <!-- <pre>{{ contactUs.number.errors | json}}</pre> -->
+                      </div>
+                  </div>
+                </div>
+              </div><!--/.col-->
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="contactEmail">Contact Email</label>
+                  <input type="text" class="form-control" formControlName="email" id="contatctusemail" value="{{contactUs.email.value}}">
+                  <div class="form-control-feedback" 
+                  *ngIf="contactUs.email.errors && (contactUs.email.dirty || contactUs.email.touched)">
+                    <div class="alert alert-warning" style="padding-bottom:0px">
+                      <p *ngIf="contactUs.email.errors.required">- Contact Number is required</p>
+                      <p *ngIf="contactUs.email.errors.pattern">
+                          - Invalid email, should be of form 'ubcsc@gmail.com'.
+                        </p>
+                    </div>
+                  </div>
+                </div><!--/.col-->
+              </div>
+          </fieldset>
+        </div>
+      <div class="card-footer">
+        <button type="submit" [disabled]="!contactusform.valid" class="btn btn-sm btn-primary" data-toggle="modal" (click)="saveContactUSModal.show()"><i class="fa fa-dot-circle-o"></i> Save Changes</button>
+      </div>
+  </form>
+    
+
+  <div bsModal #saveContactUSModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-info" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Save Contact Information</h4>
+            <button type="button" class="close" (click)="saveContactUSModal.hide()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Click Save to save current <strong>Contact Information</strong> or <strong>Cancel</strong> to abort this modal&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="saveContactUSModal.hide()">Close</button>
+            <button type="button" class="btn btn-info" (click)="onSubmit(); saveContactUSModal.hide()">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->

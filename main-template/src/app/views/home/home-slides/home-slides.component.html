@@ -1,0 +1,110 @@
+    <div class="card">
+        <div class="card-header">
+          <strong>Home Page</strong>
+          <small>Pictures</small>
+        </div>
+        <div class="card-body">
+            <carousel [interval]="myInterval" [noWrap]="noWrapSlides" [(activeSlide)]="activeSlideIndex">
+	            <slide *ngFor="let slide of slides; let index=index">
+	              <img [src]="slide.filename" alt="{{slide.filename}}" style="display: block; width: 100%;">
+
+	              <div class="carousel-caption">
+	                <h4>Slide {{index}}</h4>
+	                <p>{{slide.text}}</p>
+	              </div>
+	            </slide>
+	        </carousel>
+	          <br/>
+	          <br/>
+	          <div>
+	            <div class="checkbox">
+	              <label><input type="checkbox" [(ngModel)]="noWrapSlides">Disable Slide Looping</label>
+	            </div>
+
+	            <span>Interval, in milliseconds (Enter a negative number or 0 to stop the interval.): </span>
+	            <input type="number" class="form-control" [(ngModel)]="myInterval">
+	          </div>
+          </div>
+          <div class="card-footer">
+           <!--   <button type="browse" class="btn btn-sm btn-info"><i class="fa fa-ban"></i> Upload HomePage Image </button> -->
+              <div>
+	            <app-upload-picture (newFile)="addSlide($event)"></app-upload-picture>
+	            <button type="button" class="btn btn-info"
+	                    (click)="pauseSlide(); deleteImageModal.show()">Remove Current
+	            </button>
+	          </div>
+          </div>
+    </div>
+
+
+<!-- 
+      <div class="card">
+        <div class="card-header">
+          Carousel
+          <small> dynamic slides</small>
+        </div>
+        <div class="card-body">
+          <carousel [interval]="myInterval" [noWrap]="noWrapSlides" [(activeSlide)]="activeSlideIndex">
+            <slide *ngFor="let slide of slides; let index=index">
+              <img [src]="slide.filename" alt="{{slide.filename}}" style="display: block; width: 50%; height: 50%; padding-bottom: 100px;">
+
+              <div class="carousel-caption">
+                <h4>Slide {{index}}</h4>
+                <p>{{slide.text}}</p>
+              </div>
+            </slide>
+          </carousel>
+          <br/>
+          <br/>
+          <div>
+            <app-upload-picture (newFile)="addFile($event)"></app-upload-picture>
+            <button type="button" class="btn btn-info"
+                    (click)="deleteImageModal.show(); pauseSlide()">Remove Current
+            </button>
+            <button type="button" class="btn btn-info"
+                    (click)="removeSlide(2)">Remove #3
+            </button>
+          </div>
+          <div>
+            <div class="checkbox">
+              <label><input type="checkbox" [(ngModel)]="noWrapSlides">Disable Slide Looping</label>
+            </div>
+
+            <span>Interval, in milliseconds (Enter a negative number or 0 to stop the interval.): </span>
+            <input type="number" class="form-control" [(ngModel)]="myInterval">
+          </div>
+        </div>
+      </div> -->
+
+
+
+<div bsModal #deleteImageModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-danger" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Save HOD Message</h4>
+            <button type="button" class="close" (click)="deleteImageModal.hide()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <p>Click delete to <strong>delete</strong> current <strong>image</strong> or <strong>Cancel</strong> to abort this modal&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="deleteImageModal.hide()">Close</button>
+            <button type="button" class="btn btn-danger" (click)="deleteImageModal.hide(); removeSlide()">Delete Image</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+<!-- 
+ <ul class="picturelist">
+              <li *ngFor="let homepicture of homePagePic" class="picturelist">
+                <div class="col-sm-6 ">
+                  <img src={{homepicture.filename}} class="" alt="{{homepicture.filename}}" width="250" height="250" style="padding-bottom: 100px;" />
+                </div>
+
+                <button type="delete" class="btn btn-sm btn-danger" data-toggle="modal" (click)="dangerModal.show()"><i class="fa fa-ban"></i> Delete </button>
+             </li>
+            </ul> -->
