@@ -9,6 +9,7 @@
     "webpack",
     "typescript"
   ],
+  "main":"server-start.js",
   "author": "Lior Kesos <lior@linnovate.net>",
   "homepage": "http://mean.io",
   "license": "MIT",
