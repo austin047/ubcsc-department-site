@@ -75,7 +75,7 @@ app.get('/kittens', (req,res) => {
 
 
 app.get('/', (req, res) => {
-  res.send('Name is austin');
+  res.send('Name is austin ambe');
   //res.sendFile(path.join(appRoot.path, 'public/dist/index.html'));
 });
 
