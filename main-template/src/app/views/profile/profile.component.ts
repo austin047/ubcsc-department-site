@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  isDevMode } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
-import { GeneralService } from './../../general.service';
+import { AppInitUrl } from './../../app-init-url'
 
 @Component({
   templateUrl: 'profile.component.html'
@@ -13,15 +13,16 @@ export class ProfileComponent  {
 
   public testVar: Object = {name:'Angular', message: 'Error reaching server'};
 
-    constructor(private generalService: GeneralService) { }
+    constructor(private appInitUrl : AppInitUrl) { 
+      console.log(this.appInitUrl.BaseUrl);
+      if(isDevMode()) {
+        console.log('development')
+      } else {
+        console.log('Production')
+      }
+    }
+
 
       ngOnInit() {
-        if (this.testVar) {
-          this.generalService.getHomePageInfo()
-        .subscribe(data => {
-          this.testVar = data
-       //   console.log(this.testVar);
-        })
-    }
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of} from 'rxjs';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { HomeInfo, DefaultMessage, HodUpdate, HomeUpdate } from './home.interface';
+import { AppInitUrl } from './../../app-init-url'
 
 import { catchError, tap } from 'rxjs/operators';
 
@@ -9,9 +10,9 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class HomeService {
-  private apiUrl = 'http://localhost:3000/api/home'
+  private apiUrl = `${this.appInitUrl.BaseUrl}/api/home`
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private appInitUrl: AppInitUrl ) { }
 
     /* GET HomePage details*/
 
