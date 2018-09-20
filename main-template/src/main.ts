@@ -6,13 +6,10 @@ import { environment } from './environments/environment';
 
 if (environment.production ) {
   enableProdMode();
-  console.log('Oraginal production')
-}
 
-if(!isDevMode()) {
-  enableProdMode();
-  console.log('Test Production production')
 }
+enableProdMode();
+
 
 
 
