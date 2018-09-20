@@ -9,6 +9,7 @@
     "webpack",
     "typescript"
   ],
+  "main":"server-start.js",
   "author": "Lior Kesos <lior@linnovate.net>",
   "homepage": "http://mean.io",
   "license": "MIT",
@@ -55,6 +56,7 @@
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
     "start": "node server-start.js",
+    "start:dev": "DEBUG=http nodemon --watch server server-start.js",
     "start:coverage": "nodemon instanbul cover server-start.js",
     "start:prod": "NODE_ENV=production node server-start.js",
     "test:initial": "npm run lint && karma start",
