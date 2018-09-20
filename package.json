@@ -54,7 +54,7 @@
     "server:prod:ci": "http-server dist -p 3000 -c-1 --cors",
     "server": "npm run server:dev",
     "start:hmr": "npm run server:dev:hmr",
-    "start": "DEBUG=http nodemon --watch server server-start.js",
+    "start": "node server-start.js",
     "start:coverage": "nodemon instanbul cover server-start.js",
     "start:prod": "NODE_ENV=production node server-start.js",
     "test:initial": "npm run lint && karma start",
@@ -196,8 +196,7 @@
     "string-replace-loader": "~1.2.0",
     "style-loader": "^0.18.1",
     "supports-color": "^5.5.0",
-    "to-s    git push --set-upstream origin dev1
-    tring-loader": "^1.1.5",
+    "to-string-loader": "^1.1.5",
     "ts-node": "^3.0.2",
     "tslib": "^1.6.1",
     "tslint": "~4.5.1",
