@@ -1,77 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["views-profile-profile-module"],{
 
-/***/ "./src/app/general.service.ts":
-/*!************************************!*\
-  !*** ./src/app/general.service.ts ***!
-  \************************************/
-/*! exports provided: GeneralService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralService", function() { return GeneralService; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var httpOptions = {
-    headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpHeaders"]({ 'Content-Type': 'application/json' })
-};
-var GeneralService = /** @class */ (function () {
-    function GeneralService(http) {
-        this.http = http;
-        this.apiUrl = "http://localhost:3000/api/users";
-    }
-    /* GET HomePage details*/
-    GeneralService.prototype.getHomePageInfo = function () {
-        return this.http.get(this.apiUrl)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) {
-            return data;
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('Error')));
-    };
-    /**
-     * Handle Http operation that failed.
-     * Let the app continue.
-     * @param operation - name of the operation that failed
-     * @param result - optional value to return as the observable result
-     */
-    GeneralService.prototype.handleError = function (operation, result) {
-        if (operation === void 0) { operation = 'operation'; }
-        return function (error) {
-            // TODO: send the error to remote logging infrastructure
-            console.error(error); // log to console instead
-            // TODO: better job of transforming error for user consumption
-            console.log(operation + " failed: " + error.message);
-            // Let the app keep running by returning an empty result.
-            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(result);
-        };
-    };
-    GeneralService = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
-            providedIn: 'root'
-        }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
-    ], GeneralService);
-    return GeneralService;
-}());
-
-
-
-/***/ }),
-
 /***/ "./src/app/views/profile/profile-routing.module.ts":
 /*!*********************************************************!*\
   !*** ./src/app/views/profile/profile-routing.module.ts ***!
@@ -141,7 +69,7 @@ module.exports = "<div  class=\"row\">\n    <div class=\"col-sm-4\">\n      <div
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileComponent", function() { return ProfileComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _general_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../general.service */ "./src/app/general.service.ts");
+/* harmony import */ var _app_init_url__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../app-init-url */ "./src/app/app-init-url.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -154,25 +82,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var ProfileComponent = /** @class */ (function () {
-    function ProfileComponent(generalService) {
-        this.generalService = generalService;
+    function ProfileComponent(appInitUrl) {
+        this.appInitUrl = appInitUrl;
         this.testVar = { name: 'Angular', message: 'Error reaching server' };
+        console.log(this.appInitUrl.BaseUrl);
+        if (Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["isDevMode"])()) {
+            console.log('development');
+        }
+        else {
+            console.log('Production');
+        }
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        if (this.testVar) {
-            this.generalService.getHomePageInfo()
-                .subscribe(function (data) {
-                _this.testVar = data;
-                //   console.log(this.testVar);
-            });
-        }
     };
     ProfileComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             template: __webpack_require__(/*! ./profile.component.html */ "./src/app/views/profile/profile.component.html")
         }),
-        __metadata("design:paramtypes", [_general_service__WEBPACK_IMPORTED_MODULE_1__["GeneralService"]])
+        __metadata("design:paramtypes", [_app_init_url__WEBPACK_IMPORTED_MODULE_1__["AppInitUrl"]])
     ], ProfileComponent);
     return ProfileComponent;
 }());

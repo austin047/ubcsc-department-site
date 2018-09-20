@@ -1004,7 +1004,8 @@ var HomeModule = /** @class */ (function () {
                 _contact_info_contact_info_component__WEBPACK_IMPORTED_MODULE_7__["ContactInfoComponent"],
                 _upload_picture_upload_picture_component__WEBPACK_IMPORTED_MODULE_10__["UploadPictureComponent"],
                 _home_slides_home_slides_component__WEBPACK_IMPORTED_MODULE_12__["HomeSlidesComponent"]
-            ]
+            ],
+            schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["NO_ERRORS_SCHEMA"]]
         })
     ], HomeModule);
     return HomeModule;
@@ -1027,7 +1028,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _app_init_url__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../app-init-url */ "./src/app/app-init-url.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1041,18 +1043,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var HomeService = /** @class */ (function () {
-    function HomeService(http) {
+    function HomeService(http, appInitUrl) {
         this.http = http;
-        this.apiUrl = 'http://localhost:3000/api/home';
+        this.appInitUrl = appInitUrl;
+        this.apiUrl = this.appInitUrl.BaseUrl + "/api/home";
     }
     /* GET HomePage details*/
     HomeService.prototype.getHomePageInfo = function () {
         return this.http
             .get(this.apiUrl)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (data) {
             return data;
-        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('Error')));
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('Error')));
     };
     /**
      * PUT - Delete Home page picture
@@ -1061,7 +1065,7 @@ var HomeService = /** @class */ (function () {
     HomeService.prototype.deleteHomeImage = function (id) {
         return this.http
             .delete(this.apiUrl + "/pictures/" + id)
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return data; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (error) {
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (data) { return data; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (error) {
             console.log(error);
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(error);
         }));
@@ -1077,8 +1081,8 @@ var HomeService = /** @class */ (function () {
         console.log(contactNumber);
         return this.http
             .put(this.apiUrl, { email: email, contactNumber: contactNumber })
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return data; }), //Return what ever is send back as a response form the sever
-        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(err); }));
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (data) { return data; }), //Return what ever is send back as a response form the sever
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (err) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(err); }));
     };
     /**
      * Put Update eaisting HOD Message
@@ -1089,8 +1093,8 @@ var HomeService = /** @class */ (function () {
         console.log(hodMessage);
         return this.http
             .put(this.apiUrl + "/hodmessage", { hodMessage: hodMessage })
-            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return data; }), //Return what ever is send back as a response form the sever
-        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError('Error')));
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function (data) { return data; }), //Return what ever is send back as a response form the sever
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(this.handleError('Error')));
     };
     /**
      * Handle Http operation that failed.
@@ -1121,7 +1125,7 @@ var HomeService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _app_init_url__WEBPACK_IMPORTED_MODULE_3__["AppInitUrl"]])
     ], HomeService);
     return HomeService;
 }());
@@ -1164,6 +1168,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UploadPictureComponent", function() { return UploadPictureComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_init_url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../../app-init-url */ "./src/app/app-init-url.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1175,9 +1180,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var UploadPictureComponent = /** @class */ (function () {
-    function UploadPictureComponent(http) {
+    function UploadPictureComponent(http, appInitUrl) {
         this.http = http;
+        this.appInitUrl = appInitUrl;
+        this.baseUrl = this.appInitUrl.BaseUrl;
         this.percentDone = 0;
         this.max = 100;
         this.uploadReady = false;
@@ -1202,7 +1210,7 @@ var UploadPictureComponent = /** @class */ (function () {
         var formData = new FormData();
         formData.append('file', file);
         //http://localhost:4000/api/courses/5b8ba59042d01f26c88c5351/material
-        this.http.post('http://localhost:3000/api/home/pictures', formData, { reportProgress: true, observe: 'events' })
+        this.http.post(this.baseUrl + "/api/home/pictures", formData, { reportProgress: true, observe: 'events' })
             .subscribe(function (event) {
             if (event.type === _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpEventType"].UploadProgress) {
                 _this.percentDone = Math.round(100 * event.loaded / event.total);
@@ -1228,7 +1236,7 @@ var UploadPictureComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./upload-picture.component.html */ "./src/app/views/home/upload-picture/upload-picture.component.html"),
             styles: [__webpack_require__(/*! ./upload-picture.component.scss */ "./src/app/views/home/upload-picture/upload-picture.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _app_init_url__WEBPACK_IMPORTED_MODULE_2__["AppInitUrl"]])
     ], UploadPictureComponent);
     return UploadPictureComponent;
 }());

@@ -662,10 +662,10 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/fuh/Public/ubc/main-template/node_modules/flag-icon-css/css/flag-icon.css */"./node_modules/flag-icon-css/css/flag-icon.css");
-__webpack_require__(/*! /home/fuh/Public/ubc/main-template/node_modules/font-awesome/css/font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
-__webpack_require__(/*! /home/fuh/Public/ubc/main-template/node_modules/simple-line-icons/css/simple-line-icons.css */"./node_modules/simple-line-icons/css/simple-line-icons.css");
-module.exports = __webpack_require__(/*! /home/fuh/Public/ubc/main-template/src/scss/style.scss */"./src/scss/style.scss");
+__webpack_require__(/*! /home/fuh/Public/Projects/department-site/main-template/node_modules/flag-icon-css/css/flag-icon.css */"./node_modules/flag-icon-css/css/flag-icon.css");
+__webpack_require__(/*! /home/fuh/Public/Projects/department-site/main-template/node_modules/font-awesome/css/font-awesome.css */"./node_modules/font-awesome/css/font-awesome.css");
+__webpack_require__(/*! /home/fuh/Public/Projects/department-site/main-template/node_modules/simple-line-icons/css/simple-line-icons.css */"./node_modules/simple-line-icons/css/simple-line-icons.css");
+module.exports = __webpack_require__(/*! /home/fuh/Public/Projects/department-site/main-template/src/scss/style.scss */"./src/scss/style.scss");
 
 
 /***/ })
