@@ -417,6 +417,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var AppInitUrl = /** @class */ (function () {
     function AppInitUrl() {
+        console.log(Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["isDevMode"])());
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["isDevMode"])() ? this.baseUrl = 'http://localhost:3000' : this.baseUrl = '/';
     }
     Object.defineProperty(AppInitUrl.prototype, "BaseUrl", {

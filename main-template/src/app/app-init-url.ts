@@ -11,6 +11,8 @@ export class AppInitUrl {
     }
     
     constructor() {
+        console.log(isDevMode());
+
         isDevMode() ? this.baseUrl = 'http://localhost:3000': this.baseUrl = '/'
     }
 }
