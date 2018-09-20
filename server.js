@@ -21,16 +21,17 @@ mongoose.Promise = Promise;
 
 
 // connect to mongo db
-const mongoUri = config.mongo.host;
-mongoose.connect(mongoUri, { server: { socketOptions: { keepAlive: 1 } } });
-mongoose.connection.on('error', () => {
-  throw new Error(`unable to connect to database: ${mongoUri}`);
-});
-mongoose.connection.once('open', () => {
-  //mongoose.connection.openUri('mongodb://127.0.0.1/camp_v12')
-   //Call the function to set up passport
-   setUpPassport();
-})
+// const mongoUri = config.mongo.host;
+// mongoose.connect(mongoUri, { server: { socketOptions: { keepAlive: 1 } }, useMongoClient: true});
+// mongoose.connection.on('error', () => {
+//   throw new Error(`unable to connect to database: ${mongoUri}`);
+//   console.log('error')
+// });
+// mongoose.connection.once('open', () => {
+//   //mongoose.connection.openUri('mongodb://127.0.0.1/camp_v12')
+//    //Call the function to set up passport
+//    setUpPassport();
+// })
 
 // print mongoose logs in dev env
 if (config.MONGOOSE_DEBUG) {
@@ -52,7 +53,7 @@ var server = http.createServer(app);
 
 // while (portActive === false) {
 
-server.listen(config.port);
+server.listen(process.env.PORT || config.port);
 server.on('error', onError);
 server.on('listening', onListening);
 
