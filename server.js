@@ -53,7 +53,7 @@ var server = http.createServer(app);
 
 // while (portActive === false) {
 
-server.listen(config.port);
+server.listen(process.env.PORT || config.port);
 server.on('error', onError);
 server.on('listening', onListening);
 
