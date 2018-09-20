@@ -19,7 +19,7 @@ const envVarsSchema = Joi.object({
   JWT_SECRET: Joi.string().required()
     .description('JWT Secret required to sign'),
   MONGO_HOST: Joi.string().required()
-    .description('mongodb://localhost:27017/test2'),
+    .description('mongodb://localhost:27017/test2' || 'mongodb://admin:admin123@ds062059.mlab.com:62059/tese1'),
   MONGO_PORT: Joi.number()
     .default(27017),
   MAILER_EMAIL_ID: Joi.string()
