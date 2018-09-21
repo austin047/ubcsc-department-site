@@ -11,7 +11,7 @@ export class ProfileComponent  {
   public saveProfilePictureModal;
   public savePersonalInfoModal;
 
-  public testVar: Object = {name:'Angular', message: 'Error reaching server'};
+  public testVar: any = {name:'Angular', message: 'Error reaching server'};
 
     constructor(private appInitUrl : AppInitUrl) { 
       console.log(this.appInitUrl.BaseUrl);
