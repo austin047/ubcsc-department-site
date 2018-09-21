@@ -13,6 +13,6 @@ export class AppInitUrl {
     constructor() {
         console.log(isDevMode());
 
-        isDevMode() == true ? this.baseUrl = 'http://localhost:3000': this.baseUrl = '/'
+        isDevMode() == true ? this.baseUrl = 'http://localhost:3000': this.baseUrl = ''
     }
 }
