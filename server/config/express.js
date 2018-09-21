@@ -78,6 +78,17 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(appRoot.path, 'public/dist/index.html'));
 });
 
+// include and initialize the rollbar library with your access token
+var Rollbar = require("rollbar");
+var rollbar = new Rollbar({
+  accessToken: 'ff2855e608ea44e799eb21d5bb9cd57a',
+  captureUncaught: true,
+  captureUnhandledRejections: true
+});
+
+// record a generic message and send it to Rollbar
+console.log('Rollback message')
+rollbar.log("Hello world to!");
 
 // if error is not an instanceOf APIError, convert it.
 app.use((err, req, res, next) => {
@@ -110,11 +121,13 @@ if (config.env !== 'test') {
 }
 
 // error handler, send stacktrace only during development
-app.use((err, req, res, next) => // eslint-disable-line no-unused-vars
+app.use((err, req, res, next) => {// eslint-disable-line no-unused-vars
+  rollbar.error(err.stack);
   res.status(err.status).json({
     message: err.isPublic ? err.message : httpStatus[err.status],
     stack: config.env === 'development' ? err.stack  : {}
   })
-);
+  
+});
 
 export default app;

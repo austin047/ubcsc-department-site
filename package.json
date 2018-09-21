@@ -9,7 +9,7 @@
     "webpack",
     "typescript"
   ],
-  "main":"server-start.js",
+  "main": "server-start.js",
   "author": "Lior Kesos <lior@linnovate.net>",
   "homepage": "http://mean.io",
   "license": "MIT",
@@ -143,6 +143,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "reflect-metadata": "^0.1.10",
+    "rollbar": "^2.4.7",
     "supertest": "^3.1.0",
     "supertest-as-promised": "^4.0.2",
     "winston": "^2.3.1",
