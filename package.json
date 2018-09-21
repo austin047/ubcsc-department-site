@@ -14,7 +14,7 @@
   "homepage": "http://mean.io",
   "license": "MIT",
   "scripts": {
-    "build:aot:prod": "npm run clean:dist && npm run clean:aot && cross-env BUILD_AOT=1 npm run webpack -- --config config/webpack.prod.js  --progress --profile --bail",
+    "build:aot:prod": "npm run clean:dist && npm run clean:aot --progress --profile --bail",
     "build:aot": "npm run build:aot:prod",
     "build:dev": "npm run clean:dist && npm run webpack -- --config config/webpack.dev.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
@@ -61,7 +61,7 @@
     "start:prod": "NODE_ENV=production node server-start.js",
     "test:initial": "npm run lint && karma start",
     "test:initial2": "npm run lint",
-    "test": " mocha --timeout 10000 server/test",
+    "test": " mocha server/test",
     "test:watch": "mocha --watch --timeout 10000 server/test",
     "test:coverage": "babel-istanbul cover _    mocha --watch  server/test/-starter.js",
     "test:server": "nodemon --watch ./server/tests/mytest.js",
