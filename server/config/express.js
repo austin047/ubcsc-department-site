@@ -70,7 +70,7 @@ app.use('/api', routes);
 innograph.init('/api/graphql', app, {post: postCtrl});
 
 app.get('/kittens', (req,res) => {
-  res.json({names:"mans"}).status(200);
+  res.json({names:`routher is ${req.header}`}).status(200);
 })
 
 
