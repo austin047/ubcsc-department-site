@@ -28,23 +28,23 @@ describe('## Auth APIs', () => {
 
   //use as credentials to authenticate usign the local stratagy
     const validUserCredentialsLocal = {
-      email: 'fuhaustine@gmail.com',
+      email: 'ubcscweb@gmail.com',
       password: 'localJWTexpress',
-      username: 'localexpressjs'
+      username: 'ubcsclocalexpressjs'
     };
 
   //use as invalid email credential to authenticate using the local stratagy
   const invalidUserEmailCredentialsLocal = {
-    email: 'fuhaustin@gmail.co',
+    email: 'ubcscweb@gmail.co',
     password: 'localJWTexpress',
     username: 'localexpressjs'
   };
 
   //use as invalid password credential to authenticate using the local stratagy
   const invalidUserPasswordCredentialsLocal = {
-    email: 'localcluster@node.com',
+    email: 'ubcscweb@gmail.com',
     password: 'localJWT',
-    username: 'localexpressjs'
+    username: 'ubcsclocalexpressjs'
   };
 
   //Save the user credentials with the encrypte password
@@ -72,10 +72,21 @@ describe('## Auth APIs', () => {
        .send(validUserCredentialsLocal)
        .then((res) => {
          validUserEncryptedCredentialsLocal = res.body;
+         console.log(validUserCredentialsLocal);
+         console.log(validUserEncryptedCredentialsLocal)
+         console.log(res.body)
          done()
        })
        .catch(done);
     });
+
+    after((done) => {
+      request(app)
+      .delete(`/api/users/${validUserEncryptedCredentialsLocal._id}`)
+      .then((res) => {
+        done();
+      }) 
+    })
 
     describe('# POST /api/auth/login', () => {
       it('should return "No user with that email" error', (done) => {
@@ -90,7 +101,7 @@ describe('## Auth APIs', () => {
          .catch(done);
       });
 
-      it('should return  "Your password could not be verified. Please try again!" with wrong password', (done) => {
+      it('should return  "Your password could not be verified. Please try again!"', (done) => {
         request(app)
          .post('/api/auth/login')
          .send(invalidUserPasswordCredentialsLocal)
