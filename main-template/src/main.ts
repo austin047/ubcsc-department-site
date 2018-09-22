@@ -8,7 +8,6 @@ if (environment.production ) {
   enableProdMode();
 
 }
-enableProdMode();
 
 
 

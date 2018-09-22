@@ -2,11 +2,17 @@ import moment from 'moment';
 import path from 'path';
 import multer from 'multer';
 import appRoot from 'app-root-path';
+import fs from 'fs'
 
 
 let storage = multer.diskStorage({
     destination: (req,file,cd) => {
-      cd(null, path.join(appRoot.path, 'public/uploads'))
+      let dir = path.join(appRoot.path, 'public/uploads')
+
+      if(!fs.existsSync(dir)) {
+        fs.mkdirSync(dir);
+      }
+      cd(null,dir)
     }
     // filename: (req, file, cd) => {
     //   cd(null,null)
