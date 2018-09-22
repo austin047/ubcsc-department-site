@@ -1,6 +1,8 @@
 import { Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
 import {HttpClientModule, HttpClient, HttpRequest, HttpResponse, HttpEventType} from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
+import { AppInitUrl } from './../../../app-init-url'
+
 
 @Component({
   selector: 'app-upload-picture',
@@ -9,8 +11,8 @@ import { catchError, tap } from 'rxjs/operators';
 })
 export class UploadPictureComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient, private appInitUrl: AppInitUrl) { }
+  baseUrl = this.appInitUrl.BaseUrl
   percentDone: number = 0;
   uploadSuccess;
   max: number  = 100; 
@@ -48,7 +50,7 @@ export class UploadPictureComponent implements OnInit {
     
     //http://localhost:4000/api/courses/5b8ba59042d01f26c88c5351/material
 
-    this.http.post('http://localhost:3000/api/home/pictures', formData, {reportProgress: true, observe: 'events'})
+    this.http.post(`${this.baseUrl}/api/home/pictures`, formData, {reportProgress: true, observe: 'events'})
       .subscribe( event => {
         if(event.type === HttpEventType.UploadProgress){
           this.percentDone = Math.round(100 * event.loaded / event.total);   

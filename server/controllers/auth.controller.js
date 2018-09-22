@@ -91,7 +91,7 @@ function forgotPassword(req, res, next) {
         }
       });
       let mailOptions = {
-        from: 'fuhaustine@gmail.com',
+        from: config.email,
         to: 'fuhaustin@gmail.com',
         subject: 'Express password rest',
         text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
@@ -104,7 +104,8 @@ function forgotPassword(req, res, next) {
           if(err.errno) {
             return res.status(httpStatus.SERVICE_UNAVAILABLE).json(err);
           }
-
+          console.log("sending error")
+          console.log(err);
           return res.status(httpStatus.UNAUTHORIZED).json(err);
         };
       // Preview only available when sending through an Ethereal account
@@ -168,7 +169,7 @@ function reset(req, res, next) {
 
        let mailOptions = {
          to: 'fuhaustin@gmail.com',
-         from: 'fuhaustine@gmail.com',
+         from: config.email,
          subject: 'Your password has been changed', 
          text: 'Hello,\n\n' +
           `This is a confirmation that the password for your account ${user.email} has been changed.\n`
@@ -178,7 +179,8 @@ function reset(req, res, next) {
            if(err.errno) {
              return res.status(httpStatus.SERVICE_UNAVAILABLE).json(err);
            }
-
+           console.log('Token validity error');
+           console.log(err);
            return res.status(httpStatus.UNAUTHORIZED).json(err);
          }
          res.json({info: 'Message deliverd'});

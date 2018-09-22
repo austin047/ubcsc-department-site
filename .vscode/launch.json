@@ -7,32 +7,52 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Mocha Tests",
-            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
-            "args": [
-                "-u",
-                "tdd",
-                "--timeout",
-                "999999",
-                "--colors",
-                "${workspaceFolder}/test"
+            "name": "Launch via NPM",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "start"
             ],
-            "internalConsoleOptions": "openOnSessionStart"
+            "port": 9229
         },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Gulp task",
-            "program": "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
-            "args": [
-                "task"
-            ]
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/server/server-start.js"
-        }
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "nodemon",
+        //     "runtimeExecutable": "nodemon",
+        //     "program": "${workspaceFolder}//server-start-dev.js",
+        //     "restart": true,
+        //     "console": "integratedTerminal",
+        //     "internalConsoleOptions": "neverOpen"
+        // },
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Mocha Tests",
+        //     "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+        //     "args": [
+        //         "-u",
+        //         "tdd",
+        //         "--timeout",
+        //         "999999",
+        //         "--colors",
+        //         "${workspaceFolder}/server/test"
+        //     ],
+        //     "internalConsoleOptions": "openOnSessionStart"
+        // },
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Gulp task",
+        //     "program": "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
+        //     "args": [
+        //         "task"
+        //     ]
+        // },
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Launch Program",
+        //     "program": "${workspaceFolder}/server-start.js"
+        // }
     ]
 }
