@@ -67,6 +67,12 @@ npm test:watch
 ## Continues Delevery and Deployment
 The Application hosted on [Heroku](https://.heroku.com/) provides the ability to preview our app on every successfull pull request befor merging with master, these branched meet final delivery requirment befor being mergerd  to the master, this will ensure continues delivery. Heroku is set to automatic deploy from master except otherwise changed to use an auxilary branch.   
 
+## Persistence with a Database
+[mLab](https://mlab.com/) used for as the MongoDB database the main url found in the server-start.js file
+
+**TO DO**
+* Due to Heroku's [ephemeral](https://devcenter.heroku.com/articles/active-storage-on-heroku) Hard drive nature we will leverage the cloud file storage service of Amazon’s S3.
+
 
 
 ## Additional Tools used in this Project

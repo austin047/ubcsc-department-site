@@ -72,9 +72,6 @@ describe('## Auth APIs', () => {
        .send(validUserCredentialsLocal)
        .then((res) => {
          validUserEncryptedCredentialsLocal = res.body;
-         console.log(validUserCredentialsLocal);
-         console.log(validUserEncryptedCredentialsLocal)
-         console.log(res.body)
          done()
        })
        .catch(done);
