@@ -55,8 +55,17 @@ Run test with watcher
 
 ```
 npm test:watch
+
 ```
 
+## Continues Integration
+[Travis CI](https://travis-ci.com/) is used for **Continues Integration** and must be passed for the commits in the push to a current branch to be added in the pull request.  See npm run ci:travis in  [package.json]() file for the command that travis run for continues intergration. 
+
+## Monitoring
+[Rollbar](https://docs.rollbar.com/docs) is used to provides real-time exception reporting and continuous deployment monitoring see the rollbar dashboard for more details. 
+
+## Continues Delevery and Deployment
+The Application hosted on [Heroku](https://.heroku.com/) provides the ability to preview our app on every successfull pull request befor merging with master, these branched meet final delivery requirment befor being mergerd  to the master, this will ensure continues delivery. Heroku is set to automatic deploy from master except otherwise changed to use an auxilary branch.   
 
 
 
