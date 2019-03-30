@@ -1,4 +1,3 @@
 yarn.lock -diff
 public/* linguist-vendored
-.js linguist-vendored=false
-*.* linguist-language=Nodejs
+*.* linguist-language=js
